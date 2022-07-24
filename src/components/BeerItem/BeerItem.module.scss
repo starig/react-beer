@@ -1,0 +1,26 @@
+.beerItem {
+    width: 250px;
+    height: 242px;
+    border: 2px solid #6D6466;
+    border-radius: 15px;
+    display: grid;
+    justify-items: center;
+    padding: 5px 10px;
+    background-color: #FFBC42;
+
+    .beerTitle {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .beerSubtitle {
+        font-weight: 200;
+    }
+    .beerImage {
+        .beerImg {
+            height: 120px;
+        }
+    }
+
+}
+

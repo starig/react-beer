@@ -1,0 +1,13 @@
+.beers {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(5, 300px);
+    grid-gap: 40px;
+    padding: 40px 0;
+
+    .beerLink {
+        text-decoration: none;
+        color: black;
+    }
+}

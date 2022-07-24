@@ -1,0 +1,15 @@
+.loader {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+  .title {
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: uppercase;
+    justify-self: center;
+  }
+  .loaderImg {
+    height: 200px;
+  }
+}
+

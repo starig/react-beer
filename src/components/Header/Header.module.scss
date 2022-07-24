@@ -1,0 +1,29 @@
+.header {
+  height: 120px;
+  background-color: #1E1E24;
+  color: #FFBC42;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 0 50px;
+  .logo{
+    display: flex;
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+    text-decoration: none;
+    color: #FFBC42;
+    .logoImg {
+      height: 75px;
+      margin-right: 5px;
+    }
+    .logoText {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 24px;
+    }
+  }
+
+  .search {
+
+  }
+}
