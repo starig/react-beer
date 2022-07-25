@@ -33,6 +33,7 @@ const Homepage = () => {
         fetchData();
     }, [page, searchValue])
 
+
     return (
         <>
             <div className={styles.beers}>

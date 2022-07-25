@@ -1,7 +1,7 @@
 {
   "name": "react-beer-test-task",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "homepage": "https://starig.github.io",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",

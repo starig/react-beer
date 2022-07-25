@@ -1,12 +1,16 @@
 import React, {useCallback, useRef, useState} from 'react';
 import debounce from 'lodash.debounce';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setSearchValue} from "../../redux/slices/beerSlice";
 import styles from './Search.module.scss';
 
 const Search = () => {
     const dispatch = useDispatch();
-    const [value, setValue] = useState('');
+    let { searchValue } = useSelector(state => state.beer);
+    if (searchValue === '_') {
+        searchValue = ''
+    }
+    const [value, setValue] = useState(searchValue);
     const inputRef = useRef(null);
     const onClickCross = () => {
         dispatch(setSearchValue('_'));
