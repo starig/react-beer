@@ -10,4 +10,24 @@
         text-decoration: none;
         color: black;
     }
+    @media (max-width: 1700px) {
+        grid-template-columns: repeat(4, 300px);
+    }
+    @media (max-width: 1350px) {
+        grid-template-columns: repeat(3, 300px);
+    }
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(2, 300px);
+    }
+    @media (max-width: 650px) {
+        grid-template-columns: repeat(1, 300px);
+    }
+}
+
+.emptyPage {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 34px;
+    margin-bottom: 150px;
 }

@@ -1,29 +1,37 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import { fetchBeer } from "../../redux/slices/beerSlice";
+import {fetchBeer, selectPage} from "../../redux/slices/beerSlice";
 import BeerItem from "../../components/BeerItem/BeerItem";
 import styles from './Homepage.module.scss';
 import Skeleton from "../../components/Skeleton/Skeleton";
 import Loader from "../../components/Loader/Loader";
 import {Link} from "react-router-dom";
+import Pagination from "../../components/Pagination/Pagination";
 
 const Homepage = () => {
-    const {data, page, isLoading, isFetching} = useSelector(state => state.beer);
+    const {data, page, isLoading, isFetching, searchValue} = useSelector(state => state.beer);
     const dispatch = useDispatch();
 
     const fetchData = async () => {
         try {
-            dispatch(fetchBeer({ page }));
+            dispatch(fetchBeer({ page, searchValue }));
         } catch (e) {
             console.error(e)
         }
     };
 
+    const onPageChange = (pageNumber) => {
+        dispatch(selectPage(pageNumber));
+    }
+
     useEffect(() => {
         fetchData()
     }, []);
 
-    console.log(data);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        fetchData();
+    }, [page, searchValue])
 
     return (
         <>
@@ -38,8 +46,12 @@ const Homepage = () => {
                 }
             </div>
             {
+                data.length === 0 && <div className={styles.emptyPage}>No beer found :(</div>
+            }
+            {
                 isLoading && <Loader />
             }
+            <Pagination currentPage={page} onChangePage={(num) => onPageChange(num)}/>
         </>
 
     )

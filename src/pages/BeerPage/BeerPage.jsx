@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from './BeerPage.module.scss';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchSingleBeer} from "../../redux/slices/singleBeerSlice";
 import Loader from "../../components/Loader/Loader";
@@ -46,12 +46,16 @@ const BeerPage = () => {
                                 food_pairing.map(item => <div className={styles.foodPairingItem}>{item}</div> )
                             }
                         </div>
-                        <div className={styles.description}>
-                            {description}
+                        <div className={styles.descriptionBlock}>
+                            <div className={styles.title}>Description:</div>
+                            <div className={styles.description}>
+                                {description}
+                            </div>
                         </div>
                     </div>
                 </div>
             }
+            <Link to={'/'} className={styles.returnButton}> Return to homepage</Link>
         </div>
     )
 }

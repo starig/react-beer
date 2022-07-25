@@ -1,9 +1,11 @@
 import React from 'react';
 import logoGif from '../../assets/logo.gif';
 import styles from './Header.module.scss';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import Search from "../Search/Search";
 
 const Header = () => {
+    const { pathname } = useLocation();
     return (
         <div className={styles.header}>
             <Link to={'/'} className={styles.logo}>
@@ -11,7 +13,9 @@ const Header = () => {
                 <h3 className={styles.logoText}>starig beer</h3>
             </Link>
             <div className={styles.search}>
-                search div
+                {
+                    pathname === '/' && <Search />
+                }
             </div>
         </div>
     )

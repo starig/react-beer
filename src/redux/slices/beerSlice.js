@@ -5,8 +5,8 @@ import axios from "axios";
 
 export const fetchBeer = createAsyncThunk(
     'beer/fetchBeerStatus', async (params) => {
-        const { page } = params;
-        const { data } = await axios.get(`https://api.punkapi.com/v2/beers?page=${page}`);
+        const { page, searchValue } = params;
+        const { data } = await axios.get(`https://api.punkapi.com/v2/beers?page=${page}&beer_name=${searchValue}`);
         return data;
     }
 )
@@ -14,6 +14,7 @@ export const fetchBeer = createAsyncThunk(
 const initialState = {
     data: [],
     page: 1,
+    searchValue: '_',
     isLoading: true,
     isFetching: false
 }
@@ -30,6 +31,9 @@ export const beerSlice = createSlice({
         },
         selectPage: (state, action) => {
             state.page = action.payload;
+        },
+        setSearchValue: (state, action) => {
+            state.searchValue = action.payload;
         }
     },
     extraReducers:(builder) => {
@@ -40,8 +44,8 @@ export const beerSlice = createSlice({
         });
         builder.addCase(fetchBeer.pending, (state, action) => {
             state.isFetching = true;
+            state.isLoading = true;
             state.data = new Array(10);
-            state.isLoading = false;
         });
         builder.addCase(fetchBeer.rejected, state => {
             state.isLoading = true;
@@ -52,6 +56,6 @@ export const beerSlice = createSlice({
     }
 });
 
-export const { pagePlus, pageMinus, selectPage } = beerSlice.actions;
+export const { pagePlus, pageMinus, selectPage, setSearchValue } = beerSlice.actions;
 
 export default beerSlice.reducer;

@@ -4,6 +4,24 @@
     justify-self: center;
     align-self: center;
   }
+  .returnButton {
+    display: grid;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #6D6466;
+    color: #FFBC42;
+    transition: transform 0.4s ease-in-out;
+    text-transform: uppercase;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
 }
 
 .beerPage {
@@ -80,8 +98,12 @@
     }
   }
 
-  .description {
+  .descriptionBlock {
     grid-area: description;
     font-weight: 400;
+
+    .description {
+      font-size: 24px;
+    }
   }
 }
